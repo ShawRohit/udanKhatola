@@ -1,0 +1,8 @@
+Flask==1.1.4
+Flask-Cors
+SQLAlchemy
+PyMySQL
+MarkupSafe==2.0.1
+distutils-pytest
+boto3
+opencv-python

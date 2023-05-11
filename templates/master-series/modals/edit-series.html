@@ -1,0 +1,67 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="editSeries"
+     aria-labelledby="offcanvasEndLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasEndLabel" class="offcanvas-title">Edit Series</h5>
+        <button
+                type="button"
+                class="btn-close text-reset"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+        ></button>
+    </div>
+    <div class="offcanvas-body mt-3 mx-0 flex-grow-0 mt-3">
+        <div class="mb-3">
+            <label class="form-label">Master Series Name:</label>
+            <input type="text" class="form-control" id="edit_series_name">
+        </div>
+
+
+<!--        <div class="mb-3">-->
+<!--            <label class="form-label">Position:</label>-->
+<!--            <input type="number" min="0" id="edit_series_position" class="form-control"-->
+<!--                   name="series_position">-->
+<!--        </div>-->
+         <div class="mb-3">
+            <label for="tags5" class="form-label">Searchable
+                tags:</label>
+                    <div class="clearfix"></div>
+                    <input class="input_tags3" type="text" id="tags5" value=""/>
+
+        </div>
+
+<!--        <div class="mb-3">-->
+<!--            <label class="form-label">Master Thumbnail:</label>-->
+<!--            <div class="mb-3 d-flex align-items-start">-->
+<!--                <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100"-->
+<!--                     class="d-block rounded" id="edit-thumbnail-img">-->
+<!--                <div class="input-group ms-2">-->
+<!--                    <input type="file" class="form-control btn-outline-primary" id="edit_series_thumbnail"-->
+<!--                           aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Master Episode
+                        Thumbnail:</label>
+                     <div class="mb-3 d-flex align-items-start">
+                         <div class="input-group ms-2">
+                            <label class="custom-file-upload btn btn-primary">
+                              <input type="file" id="edit_series_thumbnail" accept="image/*"/>  Browse
+                          </label>
+                         <input type="text" id="edit-series-thumbnail-text" class="form-control" name="" readonly>
+                        </div>
+                </div>
+                </div>
+
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary mb-2 me-2 d-grid"
+                    data-bs-dismiss="offcanvas">Cancel
+            </button>
+            <button type="button" class="btn btn-primary mb-2 d-grid " id="btnEditSeries" data-id="">Update</button>
+        </div>
+
+
+    </div>
+</div>

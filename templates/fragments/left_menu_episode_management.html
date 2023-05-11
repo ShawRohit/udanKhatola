@@ -1,0 +1,50 @@
+<!-- Menu -->
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+        <a href="/dubbing-management" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <img src="{{ url_for('static', filename='assets/img/logo_icon.png') }}" alt="logo" width="50px">
+              </span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">
+                      <img width="140px" src="{{ url_for('static', filename='assets/img/logo_text.png') }}"> </span>
+        </a>
+
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+        </a>
+    </div>
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+        <!-- Dashboard -->
+        <li class="menu-item {{ active_language_management }}">
+            <a href="/language-management" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-text"></i>
+                <div data-i18n="Analytics">Language Management</div>
+            </a>
+        </li>
+
+        <li class="menu-item {% if request.path == '/dubbing-management' %}active{% endif %}">
+            <a href="/dubbing-management" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-category-alt"></i>
+                <div data-i18n="Analytics">Dubbing Management</div>
+            </a>
+        </li>
+        <li class="menu-item  {{ active_series_management }}">
+            <a href="{{ request.referrer }}" class="menu-link ">
+                <i class='menu-icon tf-icons bx bxs-chalkboard'></i>
+                <div data-i18n="Analytics">Series Management</div>
+            </a>
+        </li>
+        <li class="menu-item {% if '/episode-management/' in request.path %}active{% endif %} ms-4">
+            <a href="javascript:void(0);" class="menu-link">
+                
+                <i class='menu-icon tf-icons bx bx-film'></i>
+                <div data-i18n="Analytics">Episode Management</div>
+            </a>
+        </li>
+    </ul>
+</aside>
+<!-- / Menu -->

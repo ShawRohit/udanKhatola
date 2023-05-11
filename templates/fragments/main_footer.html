@@ -1,0 +1,197 @@
+<!-- Footer -->
+<footer class="content-footer footer bg-footer-theme">
+    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+        <div class="mb-2 mb-md-0" style="margin-left:auto;margin-right:auto">
+            ©
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            Scripture Videos
+
+        </div>
+
+    </div>
+</footer>
+<!-- / Footer -->
+
+<div class="content-backdrop fade"></div>
+</div>
+<!-- Content wrapper -->
+</div>
+<!-- / Layout page -->
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+      integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Overlay -->
+<div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+<script src="{{ url_for('static', filename='custom/series.js') }}"></script>
+<script src="{{ url_for('static', filename='custom/episode-position-change.js') }}"></script>
+<script src="{{ url_for('static', filename='custom/series-position-change.js') }}"></script>
+<!--   <script type="text/javascript">-->
+<!--     $( ".row_position" ).sortable({-->
+<!--          delay: 150,-->
+<!--          stop: function() {-->
+<!--              var selectedData = new Array();-->
+<!--              console.log($(this).attr("data-position-id"));-->
+<!--              console.log("&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;")-->
+<!--              $('.row_position>tr').each(function() {-->
+<!--                  selectedData.push($(this).attr("data-position-id"));-->
+<!--              });-->
+<!--             console.log(selectedData);-->
+<!--          }-->
+<!--      });-->
+
+<!--    </script>-->
+<script src="{{ url_for('static', filename='assets/vendor/libs/jquery/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/libs/popper/popper.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/js/bootstrap.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+
+<script src="{{ url_for('static', filename='assets/vendor/js/menu.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<!--Custom JS-->
+<script src="{{ url_for('static', filename='custom/global.js') }}"></script>
+<script src="{{ url_for('static', filename='custom/language.js') }}"></script>
+
+<script src="{{ url_for('static', filename='custom/episode.js') }}"></script>
+<script src="{{ url_for('static', filename='custom/episode-language-managemnet.js') }}"></script>
+
+<!--===== jquery range ====-->
+<script src="{{ url_for('static', filename='assets/range/freshslider.min.js') }}"></script>
+<script>
+
+
+
+    //var s3 = $("#ranged-value").freshslider({
+    //    range: true,
+    //    step:1,
+    //    value:[4, 60],
+    //    onchange:function(low, high){
+    //        console.log(low, high);
+    //    }
+    //});
+    var s3 = $("#unranged-value").freshslider({
+        range: true,
+        step: 5,
+        value: [1, 99],
+        onchange: function (low, high) {
+            console.log(low, high);
+        }
+
+    });
+
+    var s3 = $("#unranged-value2").freshslider({
+        range: true,
+        step: 1,
+        value: [1, 99],
+        onchange: function (low, high) {
+            console.log(low, high);
+        }
+
+    });
+
+</script>
+
+<!--===== jquery data table ====-->
+
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
+</script>
+
+<!--===== jquery input tage ====-->
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='assets/tag/index.js') }}"></script>
+<!--<script type="text/javascript">-->
+<!--    jQuery(document).ready(function ($) {-->
+<!--        var tags = $('#tags').inputTags({-->
+<!--            tags: [],-->
+<!--            autocomplete: {-->
+<!--                values: ['English', 'Spanish',]-->
+<!--            },-->
+
+<!--        });-->
+
+<!--        $('#tags').inputTags('tags', 'English', function (tags) {-->
+<!--            $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));-->
+<!--        });-->
+
+<!--        var autocomplete = $('#tags').inputTags('options', 'autocomplete');-->
+<!--        $('span', '#autocomplete').text(autocomplete.values.join(', '));-->
+<!--    });-->
+
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--    jQuery(document).ready(function ($) {-->
+<!--        var tags = $('#tags1').inputTags({-->
+<!--            tags: [],-->
+<!--            autocomplete: {-->
+<!--                values: []-->
+<!--            },-->
+<!--        });-->
+
+<!--        $('#tags1').inputTags('tags', '', function (tags) {-->
+<!--            $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));-->
+<!--        });-->
+
+<!--        var autocomplete = $('#tags1').inputTags('options', 'autocomplete');-->
+<!--        $('span', '#autocomplete').text(autocomplete.values.join(', '));-->
+<!--    });-->
+
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--    jQuery(document).ready(function ($) {-->
+<!--        var tags = $('#tags2').inputTags({-->
+<!--            tags: [],-->
+<!--            autocomplete: {-->
+<!--                values: []-->
+<!--            },-->
+
+<!--        });-->
+
+<!--        $('#tags2').inputTags('tags', '', function (tags) {-->
+<!--            $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));-->
+<!--        });-->
+
+<!--        var autocomplete = $('#tags2').inputTags('options', 'autocomplete');-->
+<!--        $('span', '#autocomplete').text(autocomplete.values.join(', '));-->
+<!--    });-->
+
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--    jQuery(document).ready(function ($) {-->
+<!--        var tags = $('#tags7').inputTags({-->
+<!--            tags: [],-->
+<!--            autocomplete: {-->
+<!--                values: []-->
+<!--            },-->
+<!--        });-->
+
+<!--        $('#tags7').inputTags('tags', '', function (tags) {-->
+<!--            $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));-->
+<!--        });-->
+<!--        var autocomplete = $('#tags7').inputTags('options', 'autocomplete');-->
+<!--        $('span', '#autocomplete').text(autocomplete.values.join(', '));-->
+<!--    });-->
+
+<!--</script>-->
+

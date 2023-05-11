@@ -1,0 +1,47 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="edit_lang" aria-labelledby="offcanvasEndLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasEndLabel" class="offcanvas-title">Edit Language</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body mt-3 mx-0 flex-grow-0">
+    <div class="mb-3">
+      <label for="lang_name_edit" class="form-label">Language Name</label>
+      <input type="text" id="lang_name_edit" value="" class="form-control">
+    </div>
+    <div>
+         <label for="exampleFormControlInput1" class="form-label">Language Icon:</label>
+          <div class="input-group ms-2 mb-3">
+                  <label class="custom-file-upload btn btn-primary">
+                    <input type="file" id="edit_language_icon" accept="image/*" placeholder="No file chosen"/>  Browse
+                </label>
+               <input type="text" id="edit_language_icon_text" class="form-control" name="" readonly placeholder="No file choosen">
+          </div>
+     </div>
+    <div class="mb-3">
+      <label for="lang_region_edit" class="form-label">Region</label>
+      <select id="lang_region_edit" class="form-select">
+        {% for regions, reg_val in region_list.items() %}
+          <option value="{{regions}}">{{reg_val}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="lang_reg_lang_edit" class="form-label">Regional Language</label>
+      <select id="lang_reg_lang_edit" class="form-select">
+         <option value="">n/a</option>
+         {% for lang in language_list %}
+         <option value="{{lang.language_id}}">{{lang.language_name}}</option>
+         {% endfor %}
+      </select>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button data-bs-dismiss="offcanvas" aria-label="Close" type="button" class="btn btn-secondary me-2 mb-2 d-grid">Cancel</button>
+      <button type="button" id="btnEditLanguage" class="btn btn-primary mb-2 d-grid ">Confirm Changes</button>
+    </div>
+  </div>
+</div>

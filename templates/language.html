@@ -1,0 +1,217 @@
+{% include 'fragments/main_header.html' %}
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        {% include 'fragments/left_menu.html' %}
+        <!-- Layout container -->
+        <div class="layout-page">
+            {% include 'fragments/nav_bar.html' %}
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h4 class="fw-bold py-3 mb-2">Language Management</h4>
+                    </div>
+                    {% include 'language/modals/update_language_details.html' %}
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="filter_lang"
+                         aria-labelledby="offcanvasEndLabel">
+                        <div class="offcanvas-header">
+                            <h5 id="offcanvasEndLabel" class="offcanvas-title"></h5>
+                            <button
+                                    type="button"
+                                    class="btn-close text-reset"
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Text block name </label>
+                                <input type="text" class="form-control" placeholder="Language name...">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Has audio file</label>
+                                <select class="form-control">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+
+<!--                            <div class="d-flex justify-content-between">-->
+<!--                                <button type="button" class="btn btn-secondary mb-2 d-grid">Clear Filters</button>-->
+<!--                                <button type="button" class="btn btn-primary mb-2 d-grid ">Filter</button>-->
+<!--                            </div>-->
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="view_lang_cont"
+                         aria-labelledby="offcanvasEndLabel">
+                        <div class="offcanvas-header">
+                            <h5 id="offcanvasEndLabel" class="offcanvas-title">View Text block name</h5>
+                            <button
+                                    type="button"
+                                    class="btn-close text-reset"
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">textblock title
+                                    Language</label>
+                                <textarea class="form-control"> Content...</textarea>
+                            </div>
+                            <div class="d-flex justify-content-end">
+
+                                <button type="button" class="btn btn-primary mb-2 d-grid ">Edit</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <!-- Button trigger modals -->
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="delete_lang" tabindex="-1" aria-labelledby="delete_lang"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Clear translation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to clear textblock name for language? </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-primary">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Basic Bootstrap Table -->
+
+
+                    <div class="card p-3 mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                        <img src="{{ url_for('static', filename='assets/img/eng_icon.png') }}"
+                                             alt="user-avatar" class="d-block rounded" height="100" width="100"
+                                             id="uploadedAvatar">
+                                        <div class="button-wrapper">
+                                            <h3 class=" mb-3">{{ language_data.language_name}}</h3>
+                                            <strong></strong>
+
+<!--                                            <button type="button" class="btn btn-primary account-image-reset mb-4">-->
+<!--                                                <i class="bx bx-reset d-block d-sm-none"></i>-->
+<!--                                                <span class="d-none d-sm-block">See Details</span>-->
+<!--                                            </button>-->
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+<!--                                <div class="col-lg-4 text-end">-->
+<!--                                    {#<button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"-->
+<!--                                            data-bs-target="#filter_lang" aria-controls="offcanvasEnd"><i-->
+<!--                                            class="bx bx-filter-alt"></i> Filter-->
+<!--                                    </button>#}-->
+<!--                                    <button type="button" class="btn btn-primary"-->
+<!--                                            {# onclick="toastr.error('Work in Progress');" #}>-->
+<!--                                        <i class="bx bx-filter-alt"></i> Filter-->
+<!--                                    </button>-->
+<!--                                </div>-->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card p-3">
+
+                        <div class="table-responsive text-nowrap">
+                            <table id="langKeywordTable" class="table" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>Text Block Name</th>
+                                    <th>Native Text</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0">
+                                {% for lang_key, lang_val in language_keyword_list.items() %}
+                                <tr>
+                                    <td>{{ lang_key }}</td>
+                                    <td>{{ lang_val }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                    data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                {#<a class="dropdown-item" href="javascript:void(0);"
+                                                     data-bs-toggle="offcanvas"
+                                                     data-bs-target="#view_lang_cont" aria-controls="offcanvasEnd">
+                                                <i class="bx bx-file me-2"></i> View
+                                            </a>#}
+<!--                                                <a class="dropdown-item" href="javascript:void(0);"-->
+<!--                                                   onclick="toastr.error('Work in progress')"-->
+<!--                                                   aria-controls="offcanvasEnd">-->
+<!--                                                    <i class="bx bx-file me-2"></i> View-->
+<!--                                                </a>-->
+                                                <a class="dropdown-item btnViewEditLangKeywords"
+                                                   href="javascript:void(0);" data-bs-toggle="offcanvas"
+                                                   data-bs-target="#edit_lang_cont" aria-controls="offcanvasEnd"
+                                                   keyword-key="{{ lang_key }}" keyword-value="{{ lang_val }}">
+                                                    <i class="bx bx-edit-alt me-2"></i> Edit
+                                                </a>
+                                                {#<a class="dropdown-item" href="javascript:void(0);"
+                                                     data-bs-toggle="modal"
+                                                     data-bs-target="#delete_lang">
+                                                <i class="bx bx-trash me-2"></i> Delete
+                                            </a>#}
+                                                <a class="dropdown-item" onclick="toastr.error('Work in progress')">
+                                                    <i class="bx bx-trash me-2"></i> Delete
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/ Basic Bootstrap Table -->
+
+
+                </div>
+                <!-- / Content -->
+                {% include 'fragments/main_footer.html' %}
+                <script src="{{ url_for('static', filename='custom/language.js') }}"></script>
+</body>
+</html>

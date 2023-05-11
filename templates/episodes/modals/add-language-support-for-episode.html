@@ -1,0 +1,112 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="AddLanguageEpisode"
+     aria-labelledby="offcanvasEndLabel">
+    <div class="mt-2" style="float: right">
+        <button
+                type="button"
+                class="btn-close mr-3"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+                style="float: right;margin-right: 25px"
+
+
+        ></button>
+    </div>
+    <div class="offcanvas-header">
+
+        <h5 id="episode-modal-heading">Add Language Support for
+            Episode</h5>
+
+    </div>
+    <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+        <div class="mb-3">
+            <label for="episode-add-language" class="form-label">For Language:</label>
+            <select class="form-select" id="episode-add-language">
+                {% for language in languages %}
+                <option value={{language["language_id"]}}>{{language["language_name"]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="episode-language-title" class="form-label">Title in that
+                language:</label>
+            <input class="form-control" id="episode-language-title">
+        </div>
+
+        <!--                                    <div class="mb-3">-->
+        <!--                                        <label for="exampleFormControlInput1" class="form-label">Replacement-->
+        <!--                                            Thumbnail:</label>-->
+        <!--                                        <div class="input-group input-group-merge">-->
+        <!--                                            <input type="file" id="language_thumbnail" class="form-control"-->
+        <!--                                                   aria-describedby="password" accept="image/*">-->
+        <!--&lt;!&ndash;                                            <span class="input-group-text cursor-pointer" data-bs-toggle="tooltip"&ndash;&gt;-->
+        <!--&lt;!&ndash;                                                  data-bs-placement="top" title=""&ndash;&gt;-->
+        <!--&lt;!&ndash;                                                  data-bs-original-title="Thumbnail requirements"> <i&ndash;&gt;-->
+        <!--&lt;!&ndash;                                                    class="bx bxs-info-circle"></i> </span>&ndash;&gt;-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <div><label for="exampleFormControlInput1" class="form-label">Replacement Thumbnail:</label>
+            <div class="input-group ms-2 mb-3">
+                <label class="custom-file-upload btn btn-primary">
+                    <input type="file" id="episode_language_thumbnail" accept="image/*" placeholder="No file chosen"/>
+                    Browse
+                </label>
+                <input type="text" id="episode_language_thumbnail_name" class="form-control" name="" readonly
+                       placeholder="No file choosen">
+            </div>
+        </div>
+
+
+        <div><label for="exampleFormControlInput1" class="form-label">Dubbed video:</label>
+            <div class="input-group ms-2 mb-3">
+                <label class="custom-file-upload btn btn-primary">
+                    <input type="file" id="episode_language_video" accept="video/*" placeholder="No file chosen"/>
+                    Browse
+                </label>
+                <input type="text" id="episode_language_video_name" class="form-control" name="" readonly
+                       placeholder="No file choosen">
+            </div>
+        </div>
+
+        <div><label for="exampleFormControlInput1" class="form-label">Dubbed audio:</label>
+            <div class="input-group ms-2 mb-3">
+                <label class="custom-file-upload btn btn-primary">
+                    <input type="file" id="episode_language_audio" accept="audio/*" placeholder="No file chosen"/>
+                    Browse
+                </label>
+                <input type="text" id="episode_language_audio_name" class="form-control" name="" readonly
+                       placeholder="No file choosen">
+            </div>
+        </div>
+
+        <!--                                    <div class="mb-3">-->
+        <!--                                        <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100" class="d-block rounded">-->
+        <!--                                    </div>-->
+
+        <div class="mb-3">
+            <label for="tags1" class="form-label">Searchable
+                tags:</label>
+            <div class="clearfix"></div>
+            <input type="text" id="tags1" value=""/>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="episode_language_description" class="form-label">Description in that
+                language</label>
+            <textarea class="form-control" id="episode_language_description"></textarea>
+        </div>
+
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary mb-2 me-2 d-grid btn-dismiss-modal"
+                    data-bs-dismiss="offcanvas">Cancel
+            </button>
+            <div id="view-save-button">
+                <button type="button" class="btn btn-primary mb-2 d-grid btn-add" data-id="{{episode_details['id']}}"
+                        id="add-language-support-for-episode" data-episode-id="">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

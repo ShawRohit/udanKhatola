@@ -1,0 +1,87 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd"
+     aria-labelledby="offcanvasEndLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasEndLabel" class="offcanvas-title">Create Master Series</h5>
+        <button
+                type="button"
+                class="btn-close text-reset"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+        ></button>
+    </div>
+    <div class="offcanvas-body mt-3 mx-0 flex-grow-0">
+        <div class="mb-3">
+            <label class="form-label">Master Series Name:</label>
+            <input type="text" class="form-control" id="add_series_name">
+        </div>
+
+        {#        <div class="mb-3">#}
+        {#            <label class="form-label">Master Thumbnail:</label>#}
+        {#            <div class="input-group input-group-merge">#}
+        {#                <input type="text" id="" class="form-control" name="password"#}
+        {#                       aria-describedby="password">#}
+        {#                <span class="input-group-text cursor-pointer" data-bs-toggle="tooltip"#}
+        {#                      data-bs-placement="top" title=""#}
+        {#                      data-bs-original-title="Thumbnail requirements"> <i#}
+        {#                        class="bx bxs-info-circle"></i> </span>#}
+        {#            </div>#}
+        {#        </div>#}
+
+        <div class="mb-3">
+            <label class="form-label">Position:</label>
+            {#<div id="unranged-value"></div>#}
+            <input type="number" min="0" id="add_series_position" class="form-control"
+                   name="series_position">
+        </div>
+        <div class="mb-3">
+            <label for="tags4" class="form-label">Searchable
+                tags:</label>
+                    <div class="clearfix"></div>
+                    <input class="input_tags3" type="text" id="tags4" value=""/>
+
+        </div>
+
+<!--        <div class="mb-3">-->
+<!--            <label class="form-label">Master Thumbnail:</label>-->
+<!--            <div class="mb-3 d-flex align-items-start">-->
+<!--                <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100"-->
+<!--                     class="d-block rounded">-->
+<!--                <div class="input-group ms-2">-->
+<!--                    <input type="file" class="form-control btn-outline-primary" id="add_series_thumbnail"-->
+<!--                           aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Master Episode
+                                Thumbnail:</label>
+                             <div class="mb-3 d-flex align-items-start">
+                                 <div class="input-group ms-2">
+                                    <label class="custom-file-upload btn btn-primary">
+                                      <input type="file" id="add_series_thumbnail" accept="image/*"/>  Browse
+                                  </label>
+                                 <input type="text" id="add-series-thumbnail-text" class="form-control" placeholder="No file chosen" name="" readonly>
+                                </div>
+                        </div>
+                        </div>
+
+        {#        <div class="mb-3 d-flex align-items-start">#}
+        {#            <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100" class="d-block rounded">#}
+        {#            <div class="input-group ms-2">#}
+        {#                <input type="file" class="form-control btn-outline-primary" id="inputGroupFaile04"#}
+        {#                       aria-describedby="inputGroupFileAddon04" aria-label="Upload">#}
+        {##}
+        {#            </div>#}
+        {#        </div>#}
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary mb-2 me-2 d-grid"
+                    data-bs-dismiss="offcanvas">Cancel
+            </button>
+            <button type="button" class="btn btn-primary mb-2 d-grid " id="btnCreateSeries">Create</button>
+        </div>
+
+
+    </div>
+</div>

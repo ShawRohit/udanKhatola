@@ -1,0 +1,760 @@
+{% include 'fragments/main_header.html' %}
+
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <div class="custom_loader">
+                    <div class="lds-dual-ring"><p>Uploading!</p></div>
+                </div>
+        {% include 'fragments/left_menu_series_management.html' %}
+        <!-- Layout container -->
+        <div class="layout-page">
+            {% include 'fragments/nav_bar.html' %}
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y" >
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h4 class="fw-bold py-3 mb-2">Series Management</h4>
+
+                        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#addMasterEpisode" aria-controls="offcanvasEnd"><i class='bx bx-movie'></i>
+                            Create New Episode
+                        </button>
+
+                    </div>
+
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="EditSeries"
+                         aria-labelledby="offcanvasEndLabel">
+                        <div class="offcanvas-header">
+                            <h5 id="offcanvasEndLabel" class="offcanvas-title">Edit Episode Details</h5>
+                            <button
+                                    type="button"
+                                    class="btn-close text-reset"
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Master Episode Name:</label>
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">For Series:</label>
+                                <select class="form-select">
+                                    <option>Series name</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Master Episode
+                                    Thumbnail:</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="text" id="" class="form-control" name="password"
+                                           aria-describedby="password">
+                                    <span class="input-group-text cursor-pointer" data-bs-toggle="tooltip"
+                                          data-bs-placement="top" title=""
+                                          data-bs-original-title="Thumbnail requirements"> <i
+                                            class="bx bxs-info-circle"></i> </span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Position:</label>
+                                <div id="unranged-value"></div>
+
+                            </div>
+
+                            <div class="mb-3 d-flex align-items-start">
+                                <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100" class="d-block rounded">
+                                <div class="input-group ms-2">
+                                    <input type="file" class="form-control btn-outline-primary" id="inputGroupFile04"
+                                           aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary mb-2 me-2 d-grid">Cancel</button>
+                                <button type="button" class="btn btn-primary mb-2 d-grid ">Confirm Changes</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="delModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Language Support</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to Delete eries Title for Language? This process is
+                                        irreversible, and will remove ALL related data (audio recordings, video,
+                                        etc) </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-primary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="ViewSeries"
+                         aria-labelledby="offcanvasEndLabel">
+                        <div class="offcanvas-header">
+                            <h5 id="offcanvasEndLabel" class="offcanvas-title">View Episode</h5>
+                            <button
+                                    type="button"
+                                    class="btn-close text-reset"
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Master Episode Name:</label>
+
+                                <input type="text" class="form-control" value="Name on admin panel">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">For Series:</label>
+                                <p></p>
+                                <input type="text" class="form-control" value="Series name">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Master Episode
+                                    Thumbnail:</label>
+                                <input type="text" class="form-control" value="Filename.image">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100" class="d-block rounded">
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary mb-2 me-2 d-grid">Cancel</button>
+                                <button type="button" class="btn btn-primary mb-2 d-grid ">Edit Episode</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+<!--                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd"-->
+<!--                         aria-labelledby="offcanvasEndLabel">-->
+<!--                        <div class="offcanvas-header">-->
+<!--                            <h5 id="offcanvasEndLabel" class="offcanvas-title">Create New Episode</h5>-->
+<!--                            <button-->
+<!--                                    type="button"-->
+<!--                                    class="btn-close text-reset"-->
+<!--                                    data-bs-dismiss="offcanvas"-->
+<!--                                    aria-label="Close"-->
+<!--                            ></button>-->
+<!--                        </div>-->
+<!--                        <div class="offcanvas-body my-auto mx-0 flex-grow-0">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="master_episode" class="form-label">Master Episode Name:</label>-->
+<!--                                <input type="text" class="form-control" id="master_episode">-->
+<!--                            </div>-->
+
+
+<!--                            <div class="mb-3">-->
+<!--                                <label for="exampleFormControlInput1" class="form-label">Master Episode-->
+<!--                                    Thumbnail:</label>-->
+<!--&lt;!&ndash;                                <div class="input-group input-group-merge">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <input type="text" id="" class="form-control" name="password"&ndash;&gt;-->
+<!--&lt;!&ndash;                                           aria-describedby="password">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <span class="input-group-text cursor-pointer" data-bs-toggle="tooltip"&ndash;&gt;-->
+<!--&lt;!&ndash;                                          data-bs-placement="top" title=""&ndash;&gt;-->
+<!--&lt;!&ndash;                                          data-bs-original-title="Thumbnail requirements"> <i&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="bx bxs-info-circle"></i> </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                                 <div class="mb-3 d-flex align-items-start">-->
+<!--                                <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100" class="d-block rounded">-->
+<!--                                <div class="input-group ms-2">-->
+<!--                                    <input type="file" class="form-control btn-outline-primary" id="add_episode_thumbnail"-->
+<!--                                           aria-describedby="inputGroupFileAddon04" aria-label="Upload">-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            </div>-->
+
+
+<!--&lt;!&ndash;                            <div class="mb-3 d-flex align-items-start">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100" class="d-block rounded">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="input-group ms-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <input type="file" class="form-control btn-outline-primary" id="inputGroupFile04"&ndash;&gt;-->
+<!--&lt;!&ndash;                                           aria-describedby="inputGroupFileAddon04" aria-label="Upload">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+<!--                            <div class="d-flex justify-content-end">-->
+<!--                                <button type="button" class="btn btn-secondary mb-2 me-2 d-grid">Cancel</button>-->
+<!--                                <button type="button" class="btn btn-primary mb-2 d-grid " id="btnCreateEpisode" data-series-id="{{series_details['id']}}">Create Episode</button>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+                        {% include 'master-series/modals/add-language-support-modal-for-series.html' %}
+                        {% include 'master-series/modals/view-language-for-series-support-modal.html' %}
+                        {% include 'master-series/modals/episode.html' %}
+                        {% include 'master-series/modals/edit-episode.html' %}
+
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="series_filter"
+                         aria-labelledby="offcanvasEndLabel">
+                        <div class="offcanvas-header">
+                            <h5 id="offcanvasEndLabel" class="offcanvas-title">Episodes</h5>
+                            <button
+                                    type="button"
+                                    class="btn-close text-reset"
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="offcanvas-body mt-3 mx-0 flex-grow-0">
+
+                            <div class="mb-3">
+                                <label for="ranged-value" class="form-label">Views</label>
+                                <div id="ranged-value" class="mt-2"></div>
+<!--                                <div  class="mt-2">-->
+<!--                                    <input type="range" id="ranged-value" name="vol" min="0" max="10000">-->
+<!--                                </div>-->
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="filter-episode-title" class="form-label">Episode Title</label>
+                                <input type="text" class="form-control" id="filter-episode-title">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tags" class="form-label">Language</label>
+                                <div class="clearfix"></div>
+                                <input type="text" id="tags" value=""/>
+                            </div>
+
+
+                            <!-- <div class="mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Dubbing</label>
+                              <div class="clearfix"></div>
+
+                                <div class="form-check form-check-inline mt-3">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                  <label class="form-check-label" for="inlineRadio1">Video</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                  <label class="form-check-label" for="inlineRadio2">Audio</label>
+                                </div>
+
+                              </div> -->
+
+
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary mb-2 me-2 d-grid" id="episode-clear-filter">Clear Filters</button>
+                                <button type="button" class="btn btn-primary mb-2 d-grid " id="episode-filter">Filter</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                {% include 'master-series/modals/series-detail.html' %}
+                {% include 'master-series/modals/video-play-modal.html' %}
+                    <!-- Modal -->
+                    <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Episode</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to Delete Episode? This process is irreversible, and will
+                                        remove ALL related data (audio recordings, video, etc) </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-primary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Basic Bootstrap Table -->
+
+
+                    <div class="card p-3 mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                        <img src="{{series_details['series_thumbnail']}}" alt="user-avatar" class="d-block rounded"
+                                             height="100" width="100" id="uploadedAvatar">
+                                        <div class="button-wrapper">
+                                            <h3 class=" mb-3">{{series_details['series_name']}}</h3>
+
+                                            <button type="button" class="btn btn-primary account-image-reset mb-4">
+                                                <i class="bx bx-reset d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block" data-bs-toggle="modal" data-bs-target="#seriesDetailModal">See Details</span>
+                                            </button>
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 text-end">
+                                    <button data-bs-toggle="offcanvas" data-bs-target="#series_filter"
+                                            aria-controls="offcanvasEnd" type="button" class="btn btn-primary"><i
+                                            class='bx bx-filter-alt'></i> Filter
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="nav-align-top mb-4">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <button
+                                        type="button"
+                                        class="nav-link active"
+                                        role="tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#navs-top-home"
+                                        aria-controls="navs-top-home"
+                                        aria-selected="true"
+                                >
+                                    Manage Episodes
+                                </button>
+                            </li>
+                            <li class="nav-item ">
+                                <button
+                                        type="button"
+                                        class="nav-link manage-language-tab"
+                                        role="tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#navs-top-profile"
+                                        aria-controls="navs-top-profile"
+                                        aria-selected="false"
+                                >
+                                    Manage Languages
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="navs-top-home" role="tabpanel">
+                                <div class="table-responsive text-nowrap">
+                                    <table id="example" class="table" style="width:100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Position</th>
+                                            <th>Title</th>
+                                            <th>Languages</th>
+
+                                            <th>Views</th>
+                                            <th class="no_sortby">Status</th>
+                                            <th class="no_sortby">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0 row_position">
+                                        {% for episode in episodes%}
+                                        <tr class="episode-row" data-position-id="{{episode['episode_position']}}"  data-id="{{episode['id']}}">
+                                            <td >{{episode['episode_position']}}</td>
+                                            {% if episode['episode_title']|length > 30%}
+                                            <td class="episode-name" data-id="{{episode['masterEpisodeId']}}">{{episode['episode_title'][:30] + "..."}}
+                                                {% if episode['episode_video'] == "" or episode['episode_video'] == "None" or episode['episode_video'] is none %}
+                                                <button type="button"
+                                                        class="btn btn-sm rounded-pill btn-icon btn-primary no-content" ><span
+                                                        class="tf-icons bx bx-video-plus"></span></button>
+                                                {% else %}
+                                                <button type="button" data-toggle="modal" data-target="#exampleModalCenter"
+                                                        class="btn btn-sm rounded-pill btn-icon btn-primary episode-video-icon" data-episode-title="{{episode['episode_name']}}" data-video-url="{{episode['episode_video']}}"><span
+                                                        class="tf-icons bx bx-video-plus"></span></button>
+
+                                                {% endif %}
+
+                                            </td>
+                                            {% else %}
+                                            <td class="episode-name" data-id="{{episode['masterEpisodeId']}}">{{episode['episode_title']}}
+                                               {% if episode['episode_video'] == "" or episode['episode_video'] == "None" or episode['episode_video'] is none %}
+                                                <button type="button"
+                                                        class="btn btn-sm rounded-pill btn-icon btn-primary no-content" ><span
+                                                        class="tf-icons bx bx-video-plus"></span></button>
+                                                {% else %}
+                                                <button type="button" data-toggle="modal" data-target="#exampleModalCenter"
+                                                        class="btn btn-sm rounded-pill btn-icon btn-primary episode-video-icon" data-episode-title="{{episode['episode_name']}}" data-video-url="{{episode['episode_video']}}"><span
+                                                        class="tf-icons bx bx-video-plus"></span></button>
+
+                                                {% endif %}
+                                            </td>
+                                            {% endif %}
+                                            <td>{{episode['language_count']}}</td>
+
+                                            <td>{{episode['episode_views']}}</td>
+                                            {% if episode['episode_status'] =="Active" %}
+                                            <td><select class="form-select form-select-sm episode_status" data-id="{{episode['id']}}">
+                                                <option selected>Active</option>
+                                                <option>Deactivated</option>
+                                                <option>In Progress</option>
+
+                                            </select></td>
+                                            {% elif episode['episode_status'] =="Deactivated" %}
+                                            <td><select class="form-select form-select-sm episode_status" data-id="{{episode['id']}}">
+                                                <option >Active</option>
+                                                <option selected>Deactivated</option>
+                                                <option>In Progress</option>
+
+                                            </select></td>
+                                            {% else%}
+                                            <td><select class="form-select form-select-sm episode_status" data-id="{{episode['id']}}">
+                                                <option >Active</option>
+                                                <option >Deactivated</option>
+                                                <option selected>In Progress</option>
+                                            </select></td>
+                                            {% endif %}
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+
+                                                        <a class="dropdown-item view-episode" href="javascript:void(0);"
+                                                           data-bs-toggle="offcanvas" data-bs-target="#editEpisode"
+                                                           aria-controls="offcanvasEnd" data-id="{{episode['id']}}"><i
+                                                                class='bx bx-file me-2'></i></i> View</a>
+                                                        <a class="dropdown-item edit-episode" href="javascript:void(0);"
+                                                           data-bs-toggle="offcanvas" data-bs-target="#editEpisode"
+                                                           aria-controls="offcanvasEnd" data-id="{{episode['id']}}"><i
+                                                                class="bx bx-edit-alt me-2"></i> Edit</a>
+                                                         <a class="dropdown-item delete-episode" href="javascript:void(0);"
+                                                        data-episode-id="{{ episode['id']}}"><i
+                                                                class="bx bx-trash me-2"></i> Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="EditLanguageSeries"
+                                 aria-labelledby="offcanvasEndLabel">
+                                <div class="offcanvas-header">
+                                    <h5 id="offcanvasEndLabel" class="offcanvas-title">Edit Language Support for
+                                        Series</h5>
+                                    <button
+                                            type="button"
+                                            class="btn-close text-reset"
+                                            data-bs-dismiss="offcanvas"
+                                            aria-label="Close"
+                                    ></button>
+                                </div>
+                                <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">For Language:</label>
+                                        <select class="form-select">
+                                            <option>Language</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Title in that
+                                            language:</label>
+                                        <input class="form-control" value="Name in app">
+
+                                        </input>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Replacement
+                                            Thumbnail:</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" id="" class="form-control" name="password"
+                                                   aria-describedby="password">
+                                            <span class="input-group-text cursor-pointer" data-bs-toggle="tooltip"
+                                                  data-bs-placement="top" title=""
+                                                  data-bs-original-title="Thumbnail requirements"> <i
+                                                    class="bx bxs-info-circle"></i> </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <img src="{{ url_for('static', filename='assets/img/elements/12.jpg') }}" width="100" class="d-block rounded">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Searchable
+                                            tags:</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" id="" class="form-control" name="password"
+                                                   aria-describedby="password">
+                                            <span class="input-group-text cursor-pointer" data-bs-toggle="tooltip"
+                                                  data-bs-placement="top" title=""
+                                                  data-bs-original-title="Separate tags with commas"> <i
+                                                    class="bx bxs-info-circle"></i> </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Description in that
+                                            language</label>
+                                        <textarea class="form-control">
+                          Description in that language
+                        </textarea>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-secondary mb-2 me-2 d-grid">Cancel</button>
+                                        <button type="button" class="btn btn-primary mb-2 d-grid ">Confirm Changes
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <!-- Button trigger modals -->
+
+
+                            <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
+                                <div class="table-responsive text-nowrap">
+                                    <table id="example" class="table" style="width:100%">
+                                        <thead>
+                                        <tr>
+                                            <th>In Language</th>
+                                            <th>Native Title</th>
+                                            <th class="no_sortby">Status</th>
+                                            <th class="no_sortby">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0" id="language-management-table">
+                                        {% for language in languages %}
+                                        <tr>
+                                            <td>{{language['language_name']}}</td>
+                                            {% if language['title']|length > 30 %}
+                                            <td>{{language['title'][:20]+'...'}}</td>
+                                            {% else %}
+                                             <td>{{language['title']}}</td>
+                                            {% endif
+                                            %}
+                                            {% if language['language_status'] == "Active"%}
+                                            <td><select class="form-select form-select-sm series-language-status" data-id="{{language['id']}}">
+
+                                                <option selected>Active</option>
+
+                                                <option>Deactivated</option>
+                                                <option>In Progress</option>
+
+                                            </select></td>
+                                            {% elif language['language_status'] == "In Progress"%}
+                                            <td><select class="form-select form-select-sm series-language-status" data-id="{{language['id']}}">
+
+                                                <option>Active</option>
+
+                                                <option>Deactivated</option>
+                                                <option selected>In Progress</option>
+
+                                            </select></td>
+                                            {% elif language['language_status'] == "Deactivated"%}
+                                            <td><select class="form-select form-select-sm series-language-status" data-id="{{language['id']}}">
+
+                                                <option >Active</option>
+
+                                                <option selected>Deactivated</option>
+                                                <option>In Progress</option>
+
+                                            </select></td>
+                                            {% endif %}
+
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+
+                                                        <a class="dropdown-item view-series-language " href="javascript:void(0);"
+                                                           data-bs-toggle="offcanvas"
+                                                           data-bs-target="#ViewLanguageSeries"
+                                                           aria-controls="offcanvasEnd" language-id="{{language['id']}}"><i
+                                                                class='bx bx-file me-2'></i></i> View</a>
+                                                        <a class="dropdown-item edit-series-language" href="javascript:void(0);"
+                                                          data-bs-toggle="offcanvas"
+                                                           data-bs-target="#AddLanguageSeries"
+                                                           aria-controls="offcanvasEnd" language-id="{{language['id']}}"><i
+                                                                class="bx bx-edit-alt me-2"></i> Edit</a>
+                                                        <a class="dropdown-item delete-series-language" href="javascript:void(0);"
+                                                           data-language-id="{{language['id']}}"><i
+                                                                class="bx bx-trash me-2"></i> Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor%}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-center">
+                                    <button type="button" class="btn rounded-pill btn-icon btn-primary"   data-bs-placement="top"data-bs-toggle="offcanvas"
+                                                           data-bs-target="#AddLanguageSeries"
+                                                           aria-controls="offcanvasEnd" title="Add Language">
+                                      <span class="tf-icons bx bx-plus"></span>
+                                    </button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--/ Basic Bootstrap Table -->
+
+
+                </div>
+                <!-- / Content -->
+                {% include 'fragments/main_footer.html' %}
+                <script>
+                  jQuery(document).ready(function ($) {
+                    var tags = $('#tags4').inputTags({
+                            tags: [],
+                            autocomplete: {
+                                values: []
+                            },
+                        });
+
+                        $('#tags4').inputTags('tags', '', function (tags) {
+                            $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));
+                        });
+
+                        var autocomplete = $('#tags4').inputTags('options', 'autocomplete');
+                        $('span', '#autocomplete').text(autocomplete.values.join(', '));
+                        });
+
+                        var tags = $('#tags').inputTags({
+                            tags: [],
+                            autocomplete: {
+                                values: []
+                            },
+                        });
+
+                        $('#tags').inputTags('tags', '', function (tags) {
+                            $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));
+                        });
+
+                        var autocomplete = $('#tags').inputTags('options', 'autocomplete');
+                        $('span', '#autocomplete').text(autocomplete.values.join(', '));
+
+
+                 var tags = $('#tags5').inputTags({
+                    tags: [],
+                    autocomplete: {
+                        values: []
+                    },
+
+                });
+
+                $('#tags5').inputTags('tags', '', function (tags) {
+                    $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));
+                });
+
+                var autocomplete = $('#tags5').inputTags('options', 'autocomplete');
+                $('span', '#autocomplete').text(autocomplete.values.join(', '));
+
+<!--                var tags = $('#tags1').inputTags({-->
+<!--                    tags: [],-->
+<!--                    autocomplete: {-->
+<!--                        values: []-->
+<!--                    },-->
+
+<!--                });-->
+
+<!--                $('#tags1').inputTags('tags', '', function (tags) {-->
+<!--                    $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));-->
+<!--                });-->
+
+<!--                var autocomplete = $('#tags1').inputTags('options', 'autocomplete');-->
+<!--                $('span', '#autocomplete').text(autocomplete.values.join(', '));-->
+
+
+<!--                var tags = $('#tags2').inputTags({-->
+<!--                    tags: [],-->
+<!--                    autocomplete: {-->
+<!--                        values: []-->
+<!--                    },-->
+
+<!--                });-->
+
+<!--                $('#tags2').inputTags('tags', '', function (tags) {-->
+<!--                    $('.results').empty().html('<strong>Tags:</strong> ' + tags.join(' - '));-->
+<!--                });-->
+
+<!--                var autocomplete = $('#tags2').inputTags('options', 'autocomplete');-->
+<!--                $('span', '#autocomplete').text(autocomplete.values.join(', '));-->
+
+                </script>
+                <script>
+                    var myOffcanvas1 = document.getElementById('editEpisode')
+                    myOffcanvas1.addEventListener('hidden.bs.offcanvas', function () {
+                       $(".close-item").click();
+                    });
+                    $(".inputTags-field").val("");
+                </script>
+                <script>
+                    var myOffcanvas1 = document.getElementById('addMasterEpisode')
+                    myOffcanvas1.addEventListener('hidden.bs.offcanvas', function () {
+
+                       $("#master_episode").val("");
+                       $("#episode_position").val("");
+                       $("#master_episode_title").val("");
+                       $("#add_episode_thumbnail").val("");
+                       $("#add_episode_video").val("");
+                       $("#add_episode_audio").val("");
+                       $("#episode-thumbnail").val("");
+                       $("#episode-thumbnail_video").val("");
+                       $("#episode-thumbnail_audio").val("");
+                       $("#master_episode_description").val("");
+                       $(".close-item").click();
+
+                    });
+                    $(".inputTags-field").val("");
+                </script>
+
+

@@ -1,0 +1,83 @@
+{% include 'fragments/header.html' %}
+
+<body>
+<!-- Content -->
+<div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+            <!-- Register -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- Logo -->
+                    <div class="app-brand justify-content-center">
+                        <a href="javascript:void(0)" class="app-brand-link gap-2">
+                              <span class="app-brand-logo demo">
+                                <img src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="logo"
+                                     class="main_logo">
+                              </span>
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <h4 class="mb-4 text-center">Super Admin Login </h4>
+
+                    <form id="formAuthentication" class="mb-3" >
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input
+                                    type="text"
+                                    class="form-control form-input"
+                                    id="email"
+                                    name="email-username"
+                                    placeholder="Enter your email"
+                                    autofocus
+                            />
+                        </div>
+                        <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                                <label class="form-label form-input" for="password">Password</label>
+
+                            </div>
+                            <div class="input-group input-group-merge">
+                                <input
+
+                                        type="password"
+                                        id="password"
+                                        class="form-control form-input"
+                                        name="password"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="password"
+                                />
+                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                        </div>
+                        <div class="mb-4" style="float:right">
+                            <a href="/forgot-password">
+                                <small>Forgot Password?</small>
+                            </a>
+
+                        </div>
+                        <div class="mb-3">
+                            <button id="login_btn" class="btn btn-primary d-grid w-100" type="button">Log In</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+            <!-- /Register -->
+        </div>
+    </div>
+</div>
+<!-- / Content -->
+</body>
+
+<script type="text/javascript">
+    function preventBack() {
+        window.history.forward();
+    }
+
+    setTimeout("preventBack()", 0);
+
+    window.onunload = function () { null };
+</script>
+{% include 'fragments/footer.html' %}
